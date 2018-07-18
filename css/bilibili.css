@@ -78,8 +78,128 @@ li {
 	height: 42px;
 	transition: all 0.3s;
 	/*background-color:hsla(0,0%,100%,0);*/
-
 }
+
+/*游戏弹出框*/
+#nav-game {
+	position: relative;
+}
+#gamebox {
+	width: 466px;
+	height: 256px;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+    position: absolute;
+    background: #fff;
+	top: 42px;
+	left: 0px;
+	z-index: 50;
+}
+#gb-left {
+	width: 265px;
+	margin: 12px 0 0 0 ;
+	float: left;
+}
+#gbl-top {
+	width: 240px;
+	height: 128px;
+	margin-left: 12px;
+	position: relative;cursor: pointer;
+}
+#gbl-top a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/ad8727d0ea1fd6baff9a2c5c9af445d2aa5bed1b.jpg);
+	background-size: contain;
+	border-radius: 4px;
+	padding: 0 !important;
+}
+#gbl-top span {
+	width: 220px;
+    padding: 0 10px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    font-size: 12px;
+    line-height: 30px;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
+    background: url(../img/shadow.png) repeat-x;
+	display: inline-block;
+	
+}
+#gbl-bottom {
+	margin-top: 6px;
+}
+#gbl-bottom a {
+	width: 64px;
+    height: 104px;
+    padding: 6px 12px 0;
+    display: block;
+    float: left;
+}
+#gbl-bottom img {
+	width: 64px;
+    height: 64px;
+    border-radius: 12px;
+}
+#gbl-bottom span {
+	width: 4em;
+    height: 14px;
+    margin: 8px auto;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    color: #222;
+	line-height: 1;
+	margin-top: -5px;
+}
+#gb-right {
+	width: 201px;
+	height: 234px;
+	margin: 12px 0 0 0;
+	float: left;
+	background: url(../img/line.png) no-repeat;
+	position: relative;
+}
+#gbr-a {
+	top: 8px;
+	right: 13px;
+    display: inline-block !important;
+    position: absolute !important;
+    font-size: 12px;
+    color: #00a1d6 !important;
+	padding: 0 !important;
+	line-height: 14px !important;
+	height: auto !important;
+}
+#gb-right ul {
+	padding: 35px 0 0 6px;
+	background: url(../img/title.png) no-repeat; 
+	width: 195px;
+}
+#gb-right li {
+	float: none !important;
+	height: 28px !important;
+}
+#gb-right li  a {
+	display: block;
+	height: 28px !important;
+	padding: 0 0 0 16px !important;
+	font-size: 12px;
+	line-height: 28px;
+	color: #222222;
+}
+#gb-right li  a:hover {
+	color: #00A1D6 !important;
+	background-color: #E5E9EF !important;
+}
+
+
+
+
 
 #nav-left li:nth-child(1) a {
 	padding-left: 34px;
@@ -181,5 +301,88 @@ li {
 	margin: 0 auto;
 	height: 128px;
 	position: relative;
+}
+
+#he-bo-paisou {
+	position: absolute;
+	bottom: 20px;
+	right: 0;
+	width: 338px;
+	height: 32px;
+    padding: 2px 2px 2px 2px;
+    background-color: #e5e9ef;
+    background-color: rgba(0,0,0,.12);
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 10;
+}
+#he-bo-pai {
+	display: inline-block;
+	width: 68px;
+	height: 32px;
+	line-height: 32px;
+	background-color: hsla(0,0%,100%,.88);
+    border-radius: 4px;
+    width: 68px;
+	transition: background-color .2s;
+	color: #f25d8e;
+	float: left;
+}
+#he-bo-pai:hover {
+	background-color: #FFFFFF;
+}
+#he-bo-pai i {
+	background-position: -659px -655px;
+	width: 26px;
+	height: 32px;
+}
+#he-bo-pai span {
+	vertical-align: top;
+	display: inline-block;
+	line-height: 32px;
+	margin-left: -3px;
+}
+
+#he-bo-sou {
+	float: left;
+	width: 268px;
+	height: 32px;
+	background-color: hsla(0,0%,100%,.88);
+    display: block;
+    border-radius: 4px;
+    -webkit-transition: background-color .2s;
+    -o-transition: .2s background-color;
+    transition: background-color .2s;
+	margin-left: 2px;
+	position: relative;
+}
+#he-bo-sou:hover {
+	background-color: #FFFFFF;
+}
+#he-bo-sou input {
+	height: 32px;
+	border: none;
+	width: 200px;
+	color: #222;
+	font-size: 12px;
+	padding: 0 12px;
+	background-color: transparent;
+	line-height: 30px;
+	outline: none;
+}
+#he-bo-sou button {
+	cursor: pointer;
+	background-position: -653px -720px;
+	width: 46px;
+	height: 32px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-color:transparent ;
+	border: none;
+	
+}
+#he-bo-sou button:hover {
+	background-position: -718px -720px;
 	
 }
