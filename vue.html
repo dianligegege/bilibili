@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <style>
+        .d2 {
+            width: 560px;
+            height: 510px;
+            margin: 50px 100px;
+            background-color: burlywood;
+            display: inline-block;
+        }
+
+        .d3 {
+            float: right;
+            width: 400px;
+        }
+
+        .c1 {
+            width: 120px;
+            height: 150px;
+            background-color: darkgray;
+            margin: 10px;
+            display: inline-block;
+            opacity: 1;
+        }
+
+        .c2 {
+            width: 120px;
+            height: 150px;
+            background-color: darkgray;
+            margin: 10px;
+            display: inline-block;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <div class="d2">
+            <div 
+                v-for="(item,index) in ar1"
+                @click="choice(item,index)"
+                :class="divclass[index]"
+            >
+                <div
+                >
+                    {{ item }}
+                </div>
+            </div>
+        </div>
+        <div 
+            class="d3"
+            
+        >
+            <div 
+                class="c1"
+                v-for="item in ar2"            
+            >
+                {{ item }}
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el: '#d1',
+        data: {
+            ar1: [1,1,2,3,2,4,5,6,6,5,4,3],
+            ar2: [],
+            prechoice: {item:'',index:''},
+            divclass: ["c1","c1","c1","c1","c1","c1","c1","c1","c1","c1","c1","c1"],
+        },
+        methods: {
+            choice(item,index) {
+                this.$forceUpdate();
+                if(this.prechoice.item !== item){
+                    this.prechoice.item =item ;
+                    this.prechoice.index = index;
+                } else if(this.prechoice.item == item && this.prechoice.index != index){
+                    for(var i=0;i<this.ar1.length;i++){
+                        if(this.ar1[i] == item){
+                            this.divclass[i] = "c2"
+                            this.ar2.push(item);
+                            console.log(this.ar2)
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>
