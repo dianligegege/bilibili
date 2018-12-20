@@ -12,12 +12,14 @@
             height: 510px;
             margin: 50px 100px;
             background-color: burlywood;
-            display: inline-block;
+            float: left;
         }
 
         .d3 {
-            float: right;
-            width: 400px;
+            float: left;
+            width: 560px;
+            padding-left: 20px;
+            padding-top: 50px;
         }
 
         .c1 {
@@ -49,21 +51,19 @@
             >
                 <div
                 >
-                    {{ item }}
+                    {{ item.value }}
                 </div>
             </div>
         </div>
         <div 
             class="d3"
-            
         >
             <div 
                 class="c1"
-                v-for="item in ar2"            
+                v-for="item in ar2"
             >
-                {{ item }}
+                {{ item.value }}
             </div>
-            
         </div>
     </div>
     
@@ -72,20 +72,29 @@
     new Vue({
         el: '#d1',
         data: {
-            ar1: [1,1,2,3,2,4,5,6,6,5,4,3],
+            // ar1: [1,1,2,3,2,4,5,6,6,5,4,3],
+            ar1: '',
+            ar0: [
+                {pic:'',value:1},{pic:'',value:1},
+                {pic:'',value:2},{pic:'',value:2},
+                {pic:'',value:3},{pic:'',value:3},
+                {pic:'',value:4},{pic:'',value:4},
+                {pic:'',value:5},{pic:'',value:5},
+                {pic:'',value:6},{pic:'',value:6}
+            ],
             ar2: [],
-            prechoice: {item:'',index:''},
+            prechoice: {value:'',index:''},
             divclass: ["c1","c1","c1","c1","c1","c1","c1","c1","c1","c1","c1","c1"],
         },
         methods: {
             choice(item,index) {
                 this.$forceUpdate();
-                if(this.prechoice.item !== item){
-                    this.prechoice.item =item ;
+                if(this.prechoice.value !== item.value){
+                    this.prechoice.value =item.value ;
                     this.prechoice.index = index;
-                } else if(this.prechoice.item == item && this.prechoice.index != index){
+                } else if(this.prechoice.value == item.value && this.prechoice.index != index){
                     for(var i=0;i<this.ar1.length;i++){
-                        if(this.ar1[i] == item){
+                        if(this.ar1[i].value == item.value){
                             this.divclass[i] = "c2"
                             this.ar2.push(item);
                             console.log(this.ar2)
@@ -93,6 +102,11 @@
                     }
                 }
             }
+        },
+        mounted(){
+            this.ar1 = this.ar0.sort(function(a,b){
+                return Math.random()-0.5;
+            })
         }
     })
 </script>
