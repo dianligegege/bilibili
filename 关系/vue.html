@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <style>
+        .d2 {
+            width: 560px;
+            height: 520px;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 50px;
+            background-color: burlywood;
+            float: left;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .q1 {
+            position: absolute;
+            font-size: 60px;
+            font-weight: 700;
+            color: #c94040;
+            top: 168px;
+            left: 104px;
+            width: 360px;
+            text-align: center;
+            display: none;
+        }
+
+        .q2 {
+            position: absolute;
+            font-size: 60px;
+            font-weight: 700;
+            color: #c94040;
+            top: 168px;
+            left: 104px;
+            width: 360px;
+            text-align: center;
+            display: block;
+        }
+
+        .d3 {
+            float: left;
+            width: 660px;
+            padding-left: 20px;
+            padding-top: 50px;
+        }
+
+        .c1 {
+            width: 120px;
+            height: 150px;
+            margin: 10px;
+            display: inline-block;
+            opacity: 1;
+            border-radius: 3px;
+            background-size:cover;
+            background-position:center;
+        }
+
+        .c2 {
+            width: 120px;
+            height: 150px;
+            margin: 10px;
+            display: inline-block;
+            opacity: 0;
+        }
+
+        .c3 {
+            border:2px solid #ccc;
+            border-radius:5px;
+            width:280px;
+            display:inline-block;
+            margin-right:20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <div class="d2">
+            <div :class="question" >
+                他们分别是什么关系呢？
+            </div>
+            <div 
+                v-for="(item,index) in ar1"
+                @click="choice(item,index)"
+                :class="divclass[index]"
+                :style="{backgroundImage: 'url(./img/' + item.pic + '.jpg)'}"
+            >
+            </div>
+        </div>
+        <div 
+            class="d3"
+        >
+            <div 
+                class="c3"
+                v-for="item in ar2"
+            >
+                <div v-for="i in item" class="c1" :style="{backgroundImage: 'url(./img/' + i.pic + '.jpg)'}"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el: '#d1',
+        data: {
+            ar1: '',
+            ar0: [
+                {pic:'胡歌',value:1},{pic:'胡歌父',value:1},
+                {pic:'杜',value:2},{pic:'杜妈',value:2},
+                {pic:'金龟子',value:3},{pic:'金龟子女儿',value:3},
+                {pic:'王祖蓝',value:4},{pic:'王妈',value:4},
+                {pic:'大s',value:5},{pic:'小s',value:5},
+                {pic:'姜文',value:6},{pic:'姜武',value:6}
+            ],
+            ar2: [],
+            ar3: [],
+            prechoice: {value:'',index:''},
+            divclass: ["c1","c1","c1","c1","c1","c1","c1","c1","c1","c1","c1","c1"],
+            question:"q1"
+        },
+        methods: {
+            choice(item,index) {
+                this.$forceUpdate();
+                if(this.prechoice.value !== item.value){
+                    this.prechoice.value =item.value ;
+                    this.prechoice.index = index;
+                } else if(this.prechoice.value == item.value && this.prechoice.index != index){
+                    this.ar3=[];
+                    for(var i=0;i<this.ar1.length;i++){
+                        if(this.ar1[i].value == item.value){
+                            this.divclass[i] = "c2"
+                            this.ar3.push(this.ar1[i])
+                        }
+                    }
+                    this.ar2.push(this.ar3);
+                    if(this.ar2.length == 6){
+                        this.question="q2";
+                    }
+                }
+            }
+        },
+        mounted(){
+            this.ar1 = this.ar0.sort(function(a,b){
+                return Math.random()-0.5;
+            })
+        }
+    })
+</script>
+</html>
